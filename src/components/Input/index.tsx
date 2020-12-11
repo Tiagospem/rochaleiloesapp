@@ -73,13 +73,13 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       <Icon
         name={icon}
         size={20}
-        color={error ? '#ff0000' : iconFocusedColor}
+        color={error ? '#58402d' : iconFocusedColor}
       />
       <TextInput
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         ref={inputElementRef}
-        placeholderTextColor={error ? '#ff0000' : '#bebebe'}
+        placeholderTextColor={error ? '#58402d' : '#bebebe'}
         defaultValue={defaultValue}
         onChangeText={(value) => {
           inputValueRef.current.value = value;

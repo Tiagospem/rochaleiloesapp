@@ -9,6 +9,7 @@ import {
   View,
   TextInput,
   Alert,
+  ImageBackground,
 } from 'react-native';
 import {
   Container,
@@ -81,47 +82,52 @@ const SignIn: React.FC = () => {
         enabled
         style={{flex: 1}}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
-          <Container>
-            <Image source={logoImg} />
-            <View>
-              <Title>Faça seu login</Title>
-            </View>
-            <Form ref={formRef} onSubmit={handleSignIn}>
-              <Input
-                autoCorrect={false}
-                autoCapitalize="none"
-                keyboardType="email-address"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
-              <Input
-                ref={passwordInputRef}
-                onSubmitEditing={() => {
-                  formRef.current?.submitForm();
-                }}
-                returnKeyType="go"
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-              />
-              <Button
-                isLoading={isSign}
-                enabled={!isSign}
-                onPress={() => {
-                  formRef.current?.submitForm();
-                }}>
-                Logar
-              </Button>
-            </Form>
-          </Container>
-        </ScrollView>
+        <ImageBackground
+          resizeMode="cover"
+          style={{flex: 1, justifyContent: 'center'}}
+          source={require('../../assets/images/bg.png')}>
+          <ScrollView contentContainerStyle={{flexGrow: 1}}>
+            <Container>
+              <Image source={logoImg} />
+              <View>
+                <Title>Faça seu login</Title>
+              </View>
+              <Form ref={formRef} onSubmit={handleSignIn}>
+                <Input
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  name="email"
+                  icon="mail"
+                  placeholder="E-mail"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    passwordInputRef.current?.focus();
+                  }}
+                />
+                <Input
+                  ref={passwordInputRef}
+                  onSubmitEditing={() => {
+                    formRef.current?.submitForm();
+                  }}
+                  returnKeyType="go"
+                  secureTextEntry
+                  name="password"
+                  icon="lock"
+                  placeholder="Senha"
+                />
+                <Button
+                  isLoading={isSign}
+                  enabled={!isSign}
+                  onPress={() => {
+                    formRef.current?.submitForm();
+                  }}>
+                  Logar
+                </Button>
+              </Form>
+            </Container>
+          </ScrollView>
+        </ImageBackground>
       </KeyboardAvoidingView>
       <CreatAccountButton onPress={() => navigation.navigate('SignUp')}>
         <Icon name="log-in" size={20} color="#58402d" />

@@ -21,7 +21,7 @@ export const Container = styled.View<ContainerProps>`
   ${(props) =>
     props.isErrored &&
     css`
-      border: 2px solid #ff0000;
+      border: 2px solid #58402d;
     `}
 
   ${(props) =>

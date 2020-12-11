@@ -1,5 +1,17 @@
+import {ReactNode} from 'react';
+
+export interface UrlOpenProps {
+  children: ReactNode;
+  url: string;
+}
+
 interface LastSearchDataType {
   title: string;
+}
+
+interface GrupoDataType {
+  g_lote: number;
+  id: number;
 }
 
 interface FotosDataType {
@@ -11,6 +23,36 @@ interface FotosDataType {
   destaque: number;
 }
 
+export interface UserProps {
+  apelido: string;
+}
+
+export interface EditaisGeraisProps {
+  id: number;
+  nome: string;
+  doc: string;
+  path: string;
+}
+
+export interface EditaisProps {
+  id: number;
+  tipo: number;
+  publicacao_id?: number;
+  edital_file?: string;
+  titulo?: string;
+  path?: string;
+}
+
+interface DocumentoProps{
+  nome: string;
+  doc: string;
+  path: string;
+}
+
+interface DocumentosProps {
+  doc: DocumentoProps;
+}
+
 export interface LoteDataType {
   id: number;
   leilao_id: number;
@@ -19,12 +61,21 @@ export interface LoteDataType {
   sub_valor_2?: number;
   sub_valor_avaliacao: number;
   sub_titulo: string;
-  sub_descricao?: string;
+  api_lote_desc?: string;
+  sub_informacao_adicional?: string;
   sub_maior_lance?: number;
   sub_usuario_lance_id?: number;
   sub_status: number;
+  sub_parcelamento_pct_entrada?: string;
+  sub_parcelamento_qtd_parcelas_max?: string;
   sub_permitir_parcelamento: number;
+  grupo: GrupoDataType;
   one_foto?: FotosDataType;
+  fotos?: FotosDataType[];
+  user?: UserProps;
+  editais_gerais?: EditaisGeraisProps[];
+  editais?: EditaisProps[];
+  documentos: DocumentosProps[];
 }
 
 export interface CidadeDataType {

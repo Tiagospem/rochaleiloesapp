@@ -84,7 +84,7 @@ const LeilaoCardComponent: React.FC<LeilaoCardComponentProps> = ({
         style={Styles.shadow}>
         {lote.one_foto ? (
           <LeilaoCardImage
-            loadingIndicatorSource={preload}
+            /*loadingIndicatorSource={preload}*/
             source={{
               uri: `${s3ImagePath}/${lote.one_foto.path}/${lote.one_foto.img}`,
             }}
@@ -92,7 +92,8 @@ const LeilaoCardComponent: React.FC<LeilaoCardComponentProps> = ({
         ) : (
           leilao.logo && (
             <LeilaoCardImage
-              loadingIndicatorSource={preload}
+              resizeMode="center"
+              /*loadingIndicatorSource={preload}*/
               source={{
                 uri: `${s3ImagePath}/${leilao.logo.path}/${leilao.logo.img}`,
               }}

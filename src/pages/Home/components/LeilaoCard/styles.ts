@@ -11,9 +11,7 @@ export const Container = styled.View`
   position: relative;
 `;
 
-export const LeilaoCardImage = styled.Image.attrs({
-  resizeMode: 'cover',
-})`
+export const LeilaoCardImage = styled.Image`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 180px;
@@ -40,6 +38,7 @@ export const LeilaoData = styled.Text<LeilaoDataProps>`
 
 export const LeilaoCard = styled(RectButton)`
   background: #fff;
+  z-index: 1;
   border-radius: 10px;
 `;
 
