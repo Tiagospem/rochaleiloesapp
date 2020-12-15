@@ -1,8 +1,45 @@
 import {ReactNode} from 'react';
 
+export interface UserProps {
+  id: number;
+  apelido: string;
+  email: string;
+  tipo_cadastro: number;
+  cnpj?: string;
+  cpf?: string;
+  nome?: string;
+  razao_social?: string;
+  status: number;
+}
+
+interface CredentialsProps {
+  email: string;
+  password: string;
+}
+
+interface AuthContextProps {
+  user: UserProps;
+  signIn(credentials: CredentialsProps): Promise<void>;
+  signOut(): void;
+  updateUserDate(): void;
+  isSign: boolean;
+  isRendering: boolean;
+}
+
+interface AuthState {
+  token: string;
+  user: UserProps;
+}
+
 export interface UrlOpenProps {
   children: ReactNode;
   url: string;
+}
+
+export interface SectionProfileProps {
+  icon: string;
+  label: string;
+  onPress(): void;
 }
 
 interface LastSearchDataType {

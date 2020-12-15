@@ -76,6 +76,9 @@ const Home: React.FC = () => {
     getLeiloes();
   };
 
+  /**
+   * esta dando um bug ao recarregar algumas vezes;
+   */
   const getLeiloes = async () => {
     await api
       .get('leiloes')

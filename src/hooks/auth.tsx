@@ -9,23 +9,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../services/api';
 
-interface CredentialsProps {
-  email: string;
-  password: string;
-}
-
-interface AuthContextProps {
-  user: object;
-  signIn(credentials: CredentialsProps): Promise<void>;
-  signOut(): void;
-  isSign: boolean;
-  isRendering: boolean;
-}
-
-interface AuthState {
-  token: string;
-  user: object;
-}
+import {AuthContextProps, AuthState} from '../pages/Definitions';
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
@@ -71,15 +55,28 @@ const AuthProvider: React.FC = ({children}) => {
       })
       .then(() => setIsSign(false));
   }, []);
-
   const signOut = useCallback(async () => {
     await AsyncStorage.multiRemove(['@rocha:token', '@rocha:user']);
     setData({} as AuthState);
   }, []);
 
+  const updateUserDate = useCallback(async () => {
+    await api.post('user').then((response) => {
+      AsyncStorage.setItem('@rocha:user', JSON.stringify(response.data));
+      setData({token: data.token, user: response.data});
+    });
+  }, [data.token]);
+
   return (
     <AuthContext.Provider
-      value={{user: data.user, signIn, isRendering, signOut, isSign}}>
+      value={{
+        user: data.user,
+        signIn,
+        isRendering,
+        signOut,
+        isSign,
+        updateUserDate,
+      }}>
       {children}
     </AuthContext.Provider>
   );
