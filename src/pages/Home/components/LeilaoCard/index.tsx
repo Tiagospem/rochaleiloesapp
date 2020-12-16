@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react';
-import {StyleSheet} from 'react-native';
 import {
   Container,
   LeilaoCard,
@@ -18,27 +17,7 @@ import {s3ImagePath} from '../../../../services/api';
 
 import {LeilaoDataType, LoteDataType} from '../../../Definitions';
 
-import preload from '../../../../assets/images/preload.png';
-
 import {useNavigation} from '@react-navigation/native';
-
-const Styles = StyleSheet.create({
-  shadow: {
-    shadowColor: '#a5a5a5',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 1,
-  },
-  badge: {
-    elevation: 1,
-    position: 'absolute',
-    zIndex: 9999,
-  },
-});
 
 interface LeilaoCardComponentProps {
   leilao: LeilaoDataType;
@@ -68,23 +47,21 @@ const LeilaoCardComponent: React.FC<LeilaoCardComponentProps> = ({
   return (
     <Container>
       {lote.sub_status === 1 && (
-        <BadgeStatus style={Styles.badge} color="red">
+        <BadgeStatus color="red">
           <BadgeText>RETIRADO</BadgeText>
         </BadgeStatus>
       )}
       {lote.sub_status === 2 && (
-        <BadgeStatus style={Styles.badge} color="green">
+        <BadgeStatus color="green">
           <BadgeText>VENDIDO</BadgeText>
         </BadgeStatus>
       )}
       <LeilaoCard
         onPress={() =>
           navigation.navigate('Lote', {leilao: leilao, lote: lote})
-        }
-        style={Styles.shadow}>
+        }>
         {lote.one_foto ? (
           <LeilaoCardImage
-            /*loadingIndicatorSource={preload}*/
             source={{
               uri: `${s3ImagePath}/${lote.one_foto.path}/${lote.one_foto.img}`,
             }}
@@ -92,8 +69,7 @@ const LeilaoCardComponent: React.FC<LeilaoCardComponentProps> = ({
         ) : (
           leilao.logo && (
             <LeilaoCardImage
-              resizeMode="center"
-              /*loadingIndicatorSource={preload}*/
+              resizeMode="cover"
               source={{
                 uri: `${s3ImagePath}/${leilao.logo.path}/${leilao.logo.img}`,
               }}

@@ -7,6 +7,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import About from '../pages/About';
+import Maps from '../pages/Maps';
 import Calendar from '../pages/Calendar';
 import Lote from '../pages/Lote';
 import Search from '../pages/Search';
@@ -14,7 +15,7 @@ import Search from '../pages/Search';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const colorActive = '#58402d';
+const colorActive = '#333';
 const colorInactive = '#9c9c9c';
 
 const BottomTabNavigator: React.FC = () => (
@@ -31,6 +32,8 @@ const BottomTabNavigator: React.FC = () => (
           iconName = 'briefcase';
         } else if (route.name === 'Profile') {
           iconName = 'settings';
+        } else if (route.name === 'Maps') {
+          iconName = 'map-pin';
         }
         return <FeatherIcon name={iconName} size={20} color={iconColor} />;
       },
@@ -49,6 +52,7 @@ const BottomTabNavigator: React.FC = () => (
       name="Calendar"
       component={Calendar}
     />
+    <Tab.Screen options={{title: 'Mapa'}} name="Maps" component={Maps} />
     <Tab.Screen options={{title: 'Sobre'}} name="About" component={About} />
     <Tab.Screen
       options={{title: 'Perfil'}}

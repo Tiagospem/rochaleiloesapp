@@ -28,12 +28,10 @@ export const List = styled.ScrollView.attrs({
 export const Wrapper = styled.View``;
 
 export const ContainerSingle = styled.View`
-  background-color: #f1f1f1;
   margin: 5px 10px 5px;
 `;
 
 export const ContainerList = styled.View`
-  background-color: #f1f1f1;
   width: ${itemWidth}px;
   margin-top: 5px;
   margin-bottom: 5px;

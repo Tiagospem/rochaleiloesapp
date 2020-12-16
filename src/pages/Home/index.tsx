@@ -1,13 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react';
 import api from '../../services/api';
+
 import {useScrollToTop} from '@react-navigation/native';
 
 import LeilaoList from './components/LeilaoList';
-
 import PlaceHolder from './components/PlaceHolder';
-
 import HomeHeader from './components/HomeHeader';
-
 import Separator from '../../components/Separator';
 
 import {List, Container, Footer, SeparatorContainer} from './styles';
@@ -16,8 +14,6 @@ import {ActivityIndicator} from 'react-native';
 
 import {LeilaoDataType} from '../Definitions';
 
-//import {useAuth} from '../../hooks/auth';
-
 const Home: React.FC = () => {
   const [leiloes, setLeiloes] = useState<LeilaoDataType[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -25,7 +21,6 @@ const Home: React.FC = () => {
   const [initialLoading, setInitialLoading] = useState(true);
   const [isfetching, setFetching] = useState(false);
   const flatListRef = useRef<any>();
-  //const {signOut} = useAuth();
 
   useScrollToTop(flatListRef);
 

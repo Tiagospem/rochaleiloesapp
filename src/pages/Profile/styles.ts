@@ -4,20 +4,16 @@ import {RectButton} from 'react-native-gesture-handler';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #f1f1f1;
+  background-color: #fff;
 `;
-
-interface BadgeStatusProps {
-  color: string;
-}
 
 export const Icon = styled(FeatherIcon)`
   margin-right: 15px;
 `;
 
 export const Title = styled.Text`
-  font-size: 16px;
-  font-family: 'AirbnbCereal-Medium';
+  font-size: 18px;
+  font-family: 'AirbnbCereal-Light';
 `;
 
 export const Scroll = styled.ScrollView``;
@@ -25,11 +21,12 @@ export const Scroll = styled.ScrollView``;
 export const SectionWrapper = styled.View`
   flex-direction: row;
   align-items: center;
-  padding: 15px 15px;
+  padding: 15px 0;
 `;
 
 export const SectionButton = styled(RectButton)`
   background-color: #fff;
+  padding: 0 15px;
 `;
 
 export const HeaderTitle = styled.View`
@@ -44,22 +41,32 @@ export const HeaderTitleText = styled.Text`
 
 export const HeaderSubTitle = styled.View``;
 
-export const HeaderSubTitleText = styled.Text`
-  margin-top: 25px;
+export const HeaderSubTitleText2 = styled.Text`
+  margin-top: 15px;
   font-size: 16px;
   font-family: 'AirbnbCereal-Medium';
 `;
-export const HeaderSubTitleTextEmail = styled.Text`
-  margin-top: 5px;
+
+export const HeaderSubTitleText = styled.Text`
+  margin-top: 10px;
+  margin-bottom: 15px;
   font-family: 'AirbnbCereal-Light';
   color: #333;
   align-items: center;
   display: flex;
 `;
 
-export const Header = styled.View`
-  padding: 30px 15px;
+export const HeaderMenuLabel = styled.Text`
   margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: 'AirbnbCereal-Light';
+  color: #666;
+  font-size: 15px;
+`;
+
+export const Header = styled.View`
+  padding: 0 15px;
+  margin-top: 50px;
 `;
 
 interface HeaderCardColorProps {
@@ -70,6 +77,7 @@ export const HeaderCard = styled.View<HeaderCardColorProps>`
   background-color: ${(props) => props.color};
   border-radius: 10px;
   margin-top: 20px;
+  margin-bottom: 20px;
   flex-direction: row;
   align-items: center;
 `;
@@ -77,5 +85,6 @@ export const HeaderCard = styled.View<HeaderCardColorProps>`
 export const HeaderCardTitle = styled.Text<HeaderCardColorProps>`
   font-family: 'AirbnbCereal-Medium';
   font-size: 20px;
+  margin-left: 15px;
   color: ${(props) => props.color};
 `;

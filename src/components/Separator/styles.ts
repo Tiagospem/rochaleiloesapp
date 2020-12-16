@@ -6,5 +6,5 @@ interface SeparatorProps {
 
 export const Separator = styled.View<SeparatorProps>`
   height: 1px;
-  background-color: ${(props) => (props.color ? props.color : '#e2e2e2')};
+  background-color: ${(props) => (props.color ? props.color : '#eeeeee')};
 `;

@@ -66,20 +66,16 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     });
   }, [fieldName, registerField]);
 
-  let iconFocusedColor = isFocused || isFilled ? '#58402d' : '#bebebe';
+  let iconFocusedColor = isFocused || isFilled ? '#333' : '#bebebe';
 
   return (
     <Container isFocused={isFocused} isErrored={!!error}>
-      <Icon
-        name={icon}
-        size={20}
-        color={error ? '#58402d' : iconFocusedColor}
-      />
+      <Icon name={icon} size={20} color={error ? '#333' : iconFocusedColor} />
       <TextInput
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         ref={inputElementRef}
-        placeholderTextColor={error ? '#58402d' : '#bebebe'}
+        placeholderTextColor={error ? '#333' : '#bebebe'}
         defaultValue={defaultValue}
         onChangeText={(value) => {
           inputValueRef.current.value = value;

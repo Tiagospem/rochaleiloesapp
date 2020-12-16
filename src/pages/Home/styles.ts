@@ -3,8 +3,8 @@ import {FlatList} from 'react-native';
 import {LeilaoDataType} from '../Definitions';
 
 export const Container = styled.SafeAreaView`
+  background-color: #fff;
   flex: 1;
-  background-color: #f1f1f1;
 `;
 
 export const Footer = styled.View`

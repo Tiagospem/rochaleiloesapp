@@ -7,14 +7,14 @@ interface LeilaoDataProps {
 }
 
 export const Container = styled.View`
-  background-color: #f1f1f1;
   position: relative;
 `;
 
 export const LeilaoCardImage = styled.Image`
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 180px;
+  /*border-top-left-radius: 10px;
+  border-top-right-radius: 10px;*/
+  border-radius: 15px;
+  height: 200px;
 `;
 
 export const Title = styled.Text`
@@ -39,7 +39,7 @@ export const LeilaoData = styled.Text<LeilaoDataProps>`
 export const LeilaoCard = styled(RectButton)`
   background: #fff;
   z-index: 1;
-  border-radius: 10px;
+  border-radius: 15px;
 `;
 
 export const LeilaoCardBody = styled.View`

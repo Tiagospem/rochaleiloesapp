@@ -8,7 +8,7 @@ export const Header = styled.View`
 export const Title = styled.Text`
   font-size: 18px;
   text-transform: uppercase;
-  color: #58402d;
+  color: #333;
   font-family: 'AirbnbCereal-Bold';
 `;
 

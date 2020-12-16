@@ -5,9 +5,7 @@ import {RectButton} from 'react-native-gesture-handler';
 
 const {width: viewportWidth} = Dimensions.get('window');
 
-export const Wrapper = styled.SafeAreaView`
-  background-color: #f1f1f1;
-`;
+export const Wrapper = styled.SafeAreaView``;
 
 export const ImageListContainer = styled.View`
   background-color: #fff;

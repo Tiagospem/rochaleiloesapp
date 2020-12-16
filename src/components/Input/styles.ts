@@ -21,19 +21,13 @@ export const Container = styled.View<ContainerProps>`
   ${(props) =>
     props.isErrored &&
     css`
-      border: 2px solid #58402d;
-    `}
-
-  ${(props) =>
-    props.isFocused &&
-    css`
-      border: 2px solid #d7d5d5;
+      border: 2px solid #333;
     `}
 `;
 
 export const TextInput = styled.TextInput`
   flex: 1;
-  color: #58402d;
+  color: #333;
   font-size: 16px;
   font-family: 'AirbnbCereal-Medium';
 `;

@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {useIsFocused} from '@react-navigation/native';
 import {
   Container,
   Title,
@@ -11,37 +10,26 @@ import {
   HeaderTitle,
   HeaderSubTitle,
   HeaderSubTitleText,
-  HeaderSubTitleTextEmail,
+  HeaderSubTitleText2,
   HeaderTitleText,
   HeaderCard,
   HeaderCardTitle,
+  HeaderMenuLabel,
 } from './styles';
+
+import {useIsFocused} from '@react-navigation/native';
 
 import SeparatorComp from '../../components/Separator';
 import {SectionProfileProps} from '../Definitions';
 import {useAuth} from '../../hooks/auth';
-import {StyleSheet} from 'react-native';
-
-const Styles = StyleSheet.create({
-  shadow: {
-    shadowColor: '#a5a5a5',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 3,
-  },
-});
+import LottieView from 'lottie-react-native';
 
 const Profile: React.FC<any> = () => {
-  const isFocused = useIsFocused();
-  const {signOut, user, updateUserDate} = useAuth();
-  useEffect(() => {
-    updateUserDate();
-    console.log(user.status);
-  }, [updateUserDate, isFocused, user.status]);
+  const {signOut, user} = useAuth();
+
+  const isFocussed = useIsFocused();
+
+  useEffect(() => {}, [isFocussed]);
 
   const Section = ({icon, label, onPress}: SectionProfileProps) => {
     return (
@@ -59,47 +47,82 @@ const Profile: React.FC<any> = () => {
     return (
       <Header>
         <HeaderTitle>
-          <Icon size={30} name="settings" color="#333" />
-          <HeaderTitleText>Configurações</HeaderTitleText>
+          <Icon size={30} name="user" color="#333" />
+          <HeaderTitleText>Olá, {user.apelido}</HeaderTitleText>
         </HeaderTitle>
         <HeaderSubTitle>
-          <HeaderSubTitleText>
-            Seja bem vindo, {user.apelido}
-          </HeaderSubTitleText>
-          <HeaderSubTitleTextEmail>{user.email}</HeaderSubTitleTextEmail>
+          <HeaderSubTitleText>{user.email}</HeaderSubTitleText>
+          <SeparatorComp />
+          <HeaderSubTitleText2>
+            Mantenha seu cadastro atualizado e seus documentos em dia
+          </HeaderSubTitleText2>
         </HeaderSubTitle>
         {user.status === 3 && (
-          <HeaderCard style={Styles.shadow} color="#ffe9e9">
-            <Icon size={35} color="#864a4a" name="slash" />
+          <HeaderCard color="#ffe9e9">
+            <LottieView
+              style={{
+                width: 55,
+                height: 55,
+              }}
+              source={require('../../assets/animations/block.json')}
+              autoPlay
+              loop={false}
+            />
             <HeaderCardTitle color="#864a4a">
               Cadastro bloqueado
             </HeaderCardTitle>
           </HeaderCard>
         )}
         {user.status === 2 && (
-          <HeaderCard style={Styles.shadow} color="#e6fbe2">
-            <Icon size={35} color="#626d60" name="check-circle" />
+          <HeaderCard color="#e6fbe2">
+            <LottieView
+              style={{
+                width: 35,
+                height: 35,
+              }}
+              source={require('../../assets/animations/check.json')}
+              autoPlay
+              loop={false}
+            />
             <HeaderCardTitle color="#626d60">
               Cadastro Homologado
             </HeaderCardTitle>
           </HeaderCard>
         )}
         {user.status === 4 && (
-          <HeaderCard style={Styles.shadow} color="#ffe7cf">
-            <Icon size={35} color="#847362" name="alert-circle" />
+          <HeaderCard color="#ffe7cf">
+            <LottieView
+              style={{
+                width: 35,
+                height: 35,
+              }}
+              source={require('../../assets/animations/info-warning2.json')}
+              autoPlay
+              loop={true}
+            />
             <HeaderCardTitle color="#847362">
               Cadastro com pendência
             </HeaderCardTitle>
           </HeaderCard>
         )}
         {user.status === 0 && (
-          <HeaderCard style={Styles.shadow} color="#ffe7cf">
-            <Icon size={35} color="#847362" name="mail" />
+          <HeaderCard color="#ffe7cf">
+            <LottieView
+              style={{
+                width: 35,
+                height: 35,
+              }}
+              source={require('../../assets/animations/info-warning2.json')}
+              autoPlay
+              loop={true}
+            />
             <HeaderCardTitle color="#847362">
               Cadastro não verificado
             </HeaderCardTitle>
           </HeaderCard>
         )}
+        <SeparatorComp />
+        <HeaderMenuLabel>CONFIGURAÇÕES DA CONTA</HeaderMenuLabel>
       </Header>
     );
   };

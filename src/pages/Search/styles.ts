@@ -6,17 +6,16 @@ import {RectButton} from 'react-native-gesture-handler';
 
 export const Wrapper = styled.View`
   flex: 1;
-  background-color: #f1f1f1;
+  background-color: #fff;
 `;
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #f1f1f1;
   padding: 10px 10px;
 `;
 
 export const SearchContainer = styled.View`
-  background-color: #dec245;
+  background-color: #fff;
   padding: 10px 10px;
 `;
 
